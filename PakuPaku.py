@@ -14,13 +14,12 @@ RIGHT = 3
 
 # initalization pieces
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-pygame.display.set_caption("PakuDex")
+pygame.display.set_caption("PakuPaku")
 clock = pygame.time.Clock()
 test_font = pygame.font.Font(None, 50)
 game_Running = True
 dt = 0
 player_Pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
-player_direction = DOWN
 
 # images for game
 ground_image = pygame.image.load("maps/town_1_1.png")
@@ -29,7 +28,7 @@ player_sprite_sheet_image = pygame.image.load("sprites/character.png").convert_a
 
 # surfaces for game
 ground_surface = pygame.transform.scale(ground_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
-text_surface = test_font.render("Paku-Paku", False, "white")
+# text_surface = test_font.render("Paku-Paku", True, "white")
 
 # player animation
 player_animation = playeranimation.PlayerAnimation(player_sprite_sheet_image)
@@ -49,22 +48,18 @@ while game_Running:
     # render game here
     screen.blit(ground_surface, (0, 0))
     screen.blit(current_frame, player_Pos)
-    screen.blit(text_surface, (580, 0))
 
     # change player_pos based on key press
     keys = pygame.key.get_pressed()
     if keys[pygame.K_s]:
         player_Pos.y += 300 * dt
         player_animation.update_from_key_press(DOWN)
-
     if keys[pygame.K_d]:
         player_Pos.x += 300 * dt
         player_animation.update_from_key_press(LEFT)
-
     if keys[pygame.K_w]:
         player_Pos.y -= 300 * dt
         player_animation.update_from_key_press(UP)
-
     if keys[pygame.K_a]:
         player_Pos.x -= 300 * dt
         player_animation.update_from_key_press(RIGHT)
@@ -72,7 +67,7 @@ while game_Running:
     # flip() the display to put your work on screen
     pygame.display.flip()
 
-    dt = clock.tick(60) / 1500
+    dt = clock.tick(60) / 3000
 
 pygame.quit()
 exit()

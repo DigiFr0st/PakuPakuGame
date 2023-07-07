@@ -1,5 +1,6 @@
 import pygame
 import playeranimation
+import tilemap
 
 pygame.init()
 
@@ -32,6 +33,10 @@ ground_surface = pygame.transform.scale(ground_image, (SCREEN_WIDTH, SCREEN_HEIG
 
 # player animation
 player_animation = playeranimation.PlayerAnimation(player_sprite_sheet_image)
+
+# create TileMap
+game_tilemap = tilemap.TileMap(SCREEN_WIDTH, SCREEN_HEIGHT, 40, 30)
+# game_tilemap.print_tile_map_to_console()
 
 
 while game_Running:

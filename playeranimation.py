@@ -19,7 +19,11 @@ class PlayerAnimation:
         self.animation_cooldown = 250
         self.last_update = pygame.time.get_ticks()
 
-        # creates a list of 16 character frames for walking in cardinal directions
+        # create initial animation list
+        self.build_animation_frame_list()
+
+    # creates a list of 16 character frames for walking in cardinal directions
+    def build_animation_frame_list(self):
         for x in range(self.animation_direction_count):
             for y in range(self.frames_per_direction):
                 self.player_animation_frame_list.append(
@@ -66,3 +70,6 @@ class PlayerAnimation:
             self.frame_number = 8
         if self.player_direction == PlayerAnimation.RIGHT and self.frame_number < 12:
             self.frame_number = 12
+
+    def get_player_direction(self):
+        return self.player_direction

@@ -51,16 +51,36 @@ while game_Running:
 
     # change player_pos based on key press
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_s]:
+    if keys[pygame.K_s] and keys[pygame.K_d]:
+        player_Pos.y += 212 * dt
+        player_Pos.x += 212 * dt
+        player_animation.update_from_key_press(DOWN)
+    elif keys[pygame.K_s] and keys[pygame.K_a]:
+        player_Pos.y += 212 * dt
+        player_Pos.x -= 212 * dt
+        player_animation.update_from_key_press(DOWN)
+    elif keys[pygame.K_w] and keys[pygame.K_d]:
+        player_Pos.y -= 212 * dt
+        player_Pos.x += 212 * dt
+        player_animation.update_from_key_press(UP)
+    elif keys[pygame.K_w] and keys[pygame.K_a]:
+        player_Pos.y -= 212 * dt
+        player_Pos.x -= 212 * dt
+        player_animation.update_from_key_press(UP)
+    elif keys[pygame.K_w] and keys[pygame.K_s]:
+        player_animation.update_from_key_press(player_animation.get_player_direction())
+    elif keys[pygame.K_a] and keys[pygame.K_d]:
+        player_animation.update_from_key_press(player_animation.get_player_direction())
+    elif keys[pygame.K_s]:
         player_Pos.y += 300 * dt
         player_animation.update_from_key_press(DOWN)
-    if keys[pygame.K_d]:
+    elif keys[pygame.K_d]:
         player_Pos.x += 300 * dt
         player_animation.update_from_key_press(LEFT)
-    if keys[pygame.K_w]:
+    elif keys[pygame.K_w]:
         player_Pos.y -= 300 * dt
         player_animation.update_from_key_press(UP)
-    if keys[pygame.K_a]:
+    elif keys[pygame.K_a]:
         player_Pos.x -= 300 * dt
         player_animation.update_from_key_press(RIGHT)
 

@@ -1,7 +1,8 @@
+# Tiles are Column(x), Row(y) based
 class Tile:
-    def __init__(self, x, y, walkable):
-        self.x_pos = x
-        self.y_pos = y
+    def __init__(self, column, row, walkable):
+        self.column_pos = column
+        self.row_pos = row
         self.is_walkable = walkable
         self.is_occupied = False
 
@@ -14,8 +15,10 @@ class Tile:
     def set_is_occupied(self, new_flag):
         self.is_walkable = new_flag
 
-    def get_tile_x_pos(self):
-        return self.x_pos
+    # X Position
+    def get_tile_column_num(self):
+        return self.column_pos
 
-    def get_tile_y_pos(self):
-        return self.y_pos
+    # Y Position
+    def get_tile_row_num(self):
+        return self.row_pos

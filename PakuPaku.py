@@ -24,24 +24,16 @@ player_Pos = pygame.Vector2(screen.get_width() / 2, screen.get_height() / 2)
 
 # images for game
 ground_image = pygame.image.load("maps/town_1_1.png")
-# building_foreground_image = pygame.image.load("maps/building_foreground_layer.png")
 player_sprite_sheet_image = pygame.image.load("sprites/character.png").convert_alpha()
 
 # surfaces for game
 ground_surface = pygame.transform.scale(ground_image, (SCREEN_WIDTH, SCREEN_HEIGHT))
-# text_surface = test_font.render("Paku-Paku", True, "white")
 
 # player animation
 player_animation = playeranimation.PlayerAnimation(player_sprite_sheet_image)
 
 # create TileMap
 game_tilemap = tilemap.TileMap(SCREEN_WIDTH, SCREEN_HEIGHT, 40, 30)
-# game_tilemap.print_tile_map_to_console()
-# even_tiles = []
-# for column in range(game_tilemap.get_num_of_columns()):
-#     for row in range(game_tilemap.get_num_of_rows()):
-#         if (column % 2 == 0) and (row % 2 == 0):
-#             even_tiles.append(game_tilemap.get_tile(column, row))
 
 
 while game_Running:
@@ -58,14 +50,6 @@ while game_Running:
     # render game here
     screen.blit(ground_surface, (0, 0))
     screen.blit(current_frame, player_Pos)
-    # for column in range(len(even_tiles)):
-    #     screen.blit(
-    #         pygame.Surface((32, 32)),
-    #         (
-    #             even_tiles[column].get_tile_column_num() * 32,
-    #             even_tiles[column].get_tile_row_num() * 32,
-    #         ),
-    #     )
 
     # change player_pos based on key press
     keys = pygame.key.get_pressed()
